@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+
+import { useParams } from "react-router-dom";
 import { fetchCastById } from "../../services/api";
+import { UseHttp } from "../../hooks/UseHttp";
 
 
 const MovieCast = () => {
   const { movieId } = useParams();
-  const [cast, setCast] = useState([]);
+  
+  const [cast] = UseHttp(fetchCastById, movieId);
   const defaultImg = 'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg';
-
-  useEffect(() => {
-    const getData = async () => {
-      const cast = await fetchCastById(movieId);
-      setCast(cast);
-    }
-    getData();
-  }, [movieId]);
 
 
   return (
@@ -25,7 +19,7 @@ const MovieCast = () => {
         <p>{item.character}</p>
       </li>))}
     </ul>
-  )
-}
+  );
+};
 
-export default MovieCast
+export default MovieCast;

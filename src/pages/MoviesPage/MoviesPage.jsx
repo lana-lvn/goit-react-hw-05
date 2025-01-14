@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { fetchMovieByQuery } from "../../services/api";
 import { useSearchParams } from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
+import { UseHttp } from "../../hooks/UseHttp";
 
 
 
 const MoviesPage = () => {
-  
-  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
-
 
   const handleChangeQuery = (newQuery) => {
     if (!newQuery) {
@@ -21,13 +19,8 @@ const MoviesPage = () => {
     setSearchParams(searchParams);
   };
 
-  useEffect(() => {
-    const getData = async () => {
-      const movies = await fetchMovieByQuery(query);
-      setMovies(movies);
-    }
-    getData();
-  }, [query]);
+  const [movies] = UseHttp(fetchMovieByQuery, query);
+
   return (
     <div>
       <SearchBar handleChangeQuery={handleChangeQuery} query={query} />
