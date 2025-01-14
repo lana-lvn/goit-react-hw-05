@@ -30,4 +30,9 @@ export const fetchReviewsById = async movieId => {
 export const fetchCastById = async movieId => {
     const { data } = await axios.get(`/movie/${movieId}/credits`);
     return data.cast;
-} 
+};
+
+export const fetchMovieByQuery = async query => {
+    const { data } = await axios.get(`/search/movie?query=${query}`);
+    return data.results;
+};
