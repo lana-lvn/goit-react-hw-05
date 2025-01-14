@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { fetchMoviesById } from "../../services/api";
 
 const MovieDetailsPage = () => {
@@ -33,9 +33,11 @@ const MovieDetailsPage = () => {
       </ul>
       <div>
         <h4>Additional information</h4>
-           <nav>
-        <NavLink to='cast'>Cast</NavLink>
-        <NavLink to='reviews'>Reviews</NavLink>
+        <nav>
+          <ul>
+            <li> <Link to='cast'>Cast</Link></li>
+            <li><Link to='reviews'>Reviews</Link></li>
+          </ul>
       </nav>
       <Outlet />
       </div>

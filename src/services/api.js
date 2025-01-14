@@ -22,7 +22,12 @@ export const fetchMoviesById = async id => {
     return data;
 }
 
-export const fetchReviewsById = async id => {
-    const { data } = await axios.get(`/movie/${id}/reviews`);
+export const fetchReviewsById = async movieId => {
+    const { data } = await axios.get(`/movie/${movieId}/reviews`);
     return data.results;
 };
+
+export const fetchCastById = async movieId => {
+    const { data } = await axios.get(`/movie/${movieId}/credits`);
+    return data.cast;
+} 
