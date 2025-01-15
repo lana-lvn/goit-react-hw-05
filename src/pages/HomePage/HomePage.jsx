@@ -2,14 +2,15 @@
 import MovieList from '../../components/MovieList/MovieList';
 import { fetchAllMovies } from '../../services/api';
 import { UseHttp } from '../../hooks/UseHttp';
+import s from './HomePage.module.css';
 
 const HomePage = () => {
   
   const [movies] = UseHttp(fetchAllMovies);
    
   return (
-    <div>
-      <h1>Trending today</h1>
+    <div className={s.container}>
+      <h1 className={s.homeTitle}>Trending today</h1>
       <MovieList movies={movies} />
     </div>
   );

@@ -1,0 +1,20 @@
+.reviewList {
+  padding-bottom: 30px;
+}
+.reviewItem {
+  border: 1px solid white;
+  padding: 15px;
+  max-height: 200px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+.author {
+  font-size: 18px;
+}
+
+.author,
+.content,
+.noReview {
+  color: white;
+}

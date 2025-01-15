@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { UseHttp } from "../../hooks/UseHttp";
 import { fetchMoviesById } from "../../services/api";
+import s from './MovieDetailsPage.module.css';
 
 
 const MovieDetailsPage = () => {
@@ -17,30 +18,35 @@ const MovieDetailsPage = () => {
   }
   
   return (
-    <div>
+    <div className={s.container}>
     
-      <Link to={goBackRef.current}>GO BACK</Link>
+      <Link to={goBackRef.current} className={s.goBackBtn}>GO BACK</Link>
 
-      <img src={movie.poster_path ? `http://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg} alt="poster" />
-      <h2>{movie.title}</h2>
-      <p>User Score: {movie.vote_average}</p>
-      <h3>Overview</h3>
-      <p>{movie.overview}</p>
-      <h3>Genres</h3>
-      <ul>
-        {movie.genres?.map(genre => (<li key={genre.id}>
+      
+      <div className={s.card}>
+        <img src={movie.poster_path ? `http://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg} alt="poster" className={s.image} />
+      <div className={s.cardInfo}>
+      <h2 className={s.movieTitle}>{movie.title}</h2>
+      <p className={s.score}>User Score: {movie.vote_average}</p>
+      <h3 className={s.subTitle}>Overview</h3>
+      <p className={s.overviewText}>{movie.overview}</p>
+      <h3 className={s.subTitle}>Genres</h3>
+      <ul className={s.genresList}>
+        {movie.genres?.map(genre => (<li key={genre.id} className={s.genre}>
           {genre.name}
         </li>))}
       </ul>
-      <div>
-        <h4>Additional information</h4>
+      </div>
+</div>
+      <div className={s.infoContainer}>
+        <h4 className={s.info}>Additional information</h4>
         <nav>
-          <ul>
-            <li> <Link to='cast'>Cast</Link></li>
-            <li><Link to='reviews'>Reviews</Link></li>
+          <ul className={s.details}>
+            <li> <Link to='cast' className={s.detailsLink}>⭐️ Cast</Link></li>
+            <li><Link to='reviews' className={s.detailsLink}>💬 Reviews</Link></li>
           </ul>
       </nav>
-      <Outlet />
+        <Outlet />
       </div>
      
     </div>

@@ -1,14 +1,19 @@
 .link {
-  color: black;
+  color: white;
   text-decoration: none;
+  font-family: "Goldman", serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 24px;
 }
 .active {
-  color: red;
+  text-shadow: #fb9c57 1px 0 10px;
 }
 
 nav {
   display: flex;
   gap: 20px;
   padding: 20px 50px;
+  border-bottom: 1px solid #9831b8;
+  margin-bottom: 30px;
 }

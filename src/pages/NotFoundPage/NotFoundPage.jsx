@@ -1,9 +1,10 @@
+
 const NotFoundPage = () => {
   return (
     <div>
-      NOT FOUND 404
+      <img src="../../assets/not_found.jpg" alt="not found"/>
     </div>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

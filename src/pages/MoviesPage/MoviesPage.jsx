@@ -4,6 +4,7 @@ import { fetchMovieByQuery } from "../../services/api";
 import { useSearchParams } from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
 import { UseHttp } from "../../hooks/UseHttp";
+import s from './MoviesPage.module.css';
 
 
 
@@ -22,7 +23,7 @@ const MoviesPage = () => {
   const [movies] = UseHttp(fetchMovieByQuery, query);
 
   return (
-    <div>
+    <div className={s.container}>
       <SearchBar handleChangeQuery={handleChangeQuery} query={query} />
      <MovieList movies={movies}/>
     </div>

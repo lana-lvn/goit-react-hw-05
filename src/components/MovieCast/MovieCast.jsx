@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import { fetchCastById } from "../../services/api";
 import { UseHttp } from "../../hooks/UseHttp";
+import s from './MovieCast.module.css';
 
 
 const MovieCast = () => {
@@ -12,11 +13,11 @@ const MovieCast = () => {
 
 
   return (
-    <ul>
-      {cast.map(item => (<li key={item.id}>
-        <img src={item.profile_path ? `https://image.tmdb.org/t/p/w300/${item.profile_path}` : defaultImg} alt="portrait" />
-        <h5>{item.name}</h5>
-        <p>{item.character}</p>
+    <ul className={s.castList}>
+      {cast.map(item => (<li key={item.id} className={s.castItem}>
+        <img src={item.profile_path ? `https://image.tmdb.org/t/p/w300/${item.profile_path}` : defaultImg} alt="portrait" className={s.photo} />
+        <h5 className={s.text}>{item.name}</h5>
+        <p className={s.text}>{item.character}</p>
       </li>))}
     </ul>
   );
